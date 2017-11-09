@@ -1,0 +1,20 @@
+<?php $__env->startSection('content'); ?>
+    <a href="<?php echo e(route('articles.create')); ?>" style = "padding:5px;border:1px dashed gray;"> + New Article
+    </a>
+
+    <?php foreach($articles as $article): ?>
+    <div style="border:1px solid gray;margin-top:20px;padding:20px;">
+      <h2><?php echo e($article->title); ?></h2>
+      <p><?php echo e($article->content); ?></p>
+      <a href="<?php echo e(route('articles.edit', $article->id)); ?>">Edit</a>
+      <form action="<?php echo e(route('articles.destroy',$article->id)); ?>" method="post" style="display: inline-block;">
+        <?php echo e(csrf_field()); ?>
+
+        <?php echo e(method_field("DELETE")); ?>
+
+        <button type="submit" style="color: #F08080;background-color: transprent;border: none;">Delete</button>
+      </form>	
+    </div>
+    <?php endforeach; ?>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

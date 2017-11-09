@@ -1,0 +1,13 @@
+<?php $__env->startSection('content'); ?>
+  <form action="<?php echo e(route('articles.store')); ?>" method="post">
+    <?php echo e(csrf_field()); ?>
+
+    <lable>Title</label>
+    <input type="text" name="title" style="width:100%;" value="<?php echo e(old('title')); ?>">
+    <label>Content</label>
+    <textarea name="content" rows="10" style="width:100%;"><?php echo e(old('content')); ?></textarea>
+
+    <button type="submit">OK</button>
+  </form>  	
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
