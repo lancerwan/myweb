@@ -12,8 +12,17 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 Route::resource('articles','ArticlesController');
 //Route::get('/articles', 'ArticlesController@index')->name('articles.index');
+
+//login
+Route::get('auth/login','Auth\AuthController@getLogin');
+Route::post('auth/login','Auth\AuthController@postLogin');
+Route::get('auth/logout','Auth\AuthController@getLogout');
+
+//register
+Route::get('auth/register','Auth\AuthController@getRegister');
+Route::post('auth/register','Auth\AuthController@postRegister');

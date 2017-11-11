@@ -16,12 +16,16 @@ class ArticlesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    use AuthenticatesAndRegisterUsers, ThrottlesLogins;
+
+    protected $redirectPath = '/';
     public function index()
     {
         //
-        $articles = Article::orderBy('created_at','desc')->get();
+       // $articles = Article::orderBy('created_at','desc')->get();
 
-        return view('articles.index', compact('articles'));
+      //  return view('articles.index', compact('articles'));
+        return view('home'):
     }
 
     /**
